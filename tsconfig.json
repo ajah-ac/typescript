@@ -3,7 +3,7 @@
   "compilerOptions": {
     // File Layout
     "noEmit":false,
-    "rootDir": ".",
+    "rootDir": "katas",
         "outDir": "./dist",
 
 
