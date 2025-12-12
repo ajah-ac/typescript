@@ -1,3 +1,4 @@
+"use strict";
 /**Learning TypeScript. Basic Types. Type Assertions
 Overview
 Sometimes you’ll end up in a situation where you’ll know more about a value than TypeScript does. Usually this will happen when you know the type of some entity could be more specific than its current type.
@@ -9,21 +10,28 @@ And the other is the as-syntax:
 let someValue: any = "this is a string";
 let strLength: number = (someValue as string).length;
 The two samples are equivalent. Using one over the other is mostly a choice of preference; however, when using TypeScript with JSX, only as-style assertions are allowed. */
-
-
-
-export class SuccessServerResult {
-  constructor (public httpCode: number, public resultObject:Object) {}
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ErrorServerResult = exports.SuccessServerResult = void 0;
+exports.getResult = getResult;
+class SuccessServerResult {
+    constructor(httpCode, resultObject) {
+        this.httpCode = httpCode;
+        this.resultObject = resultObject;
+    }
 }
-
-export class ErrorServerResult {
-  constructor (public httpCode: number, public message:string) {}
+exports.SuccessServerResult = SuccessServerResult;
+class ErrorServerResult {
+    constructor(httpCode, message) {
+        this.httpCode = httpCode;
+        this.message = message;
+    }
 }
-
-export function getResult(result: SuccessServerResult|ErrorServerResult) {
-  if (result.httpCode === 200) {
-    return (result as SuccessServerResult).resultObject;
-  } else {
-    return (result as ErrorServerResult).message 
-  }
+exports.ErrorServerResult = ErrorServerResult;
+function getResult(result) {
+    if (result.httpCode === 200) {
+        return result.resultObject;
+    }
+    else {
+        return result.message;
+    }
 }
